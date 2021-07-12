@@ -38,6 +38,12 @@ quotes = [
         year: 2005,
         tags: "design, art"
     },
+    {
+        quote: "When in doubt, log it out!",
+        source: "Lee Vaughn",
+        year: 2021,
+        tags: "development"
+    },
 ];
 
 
