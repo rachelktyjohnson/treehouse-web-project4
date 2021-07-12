@@ -50,6 +50,15 @@ function getRandomQuote() {
     return quotes[rand_num];
 }
 
+/***
+ * Calling this function changes the body background color. Colors are limited to darker/muted colors to better work with white text
+ ***/
+function changeBackground(){
+    let red = Math.floor(Math.random() * 125);
+    let blue = Math.floor(Math.random() * 125);
+    let green = Math.floor(Math.random() * 125);
+    document.body.style.backgroundColor = `rgb(${red}, ${blue}, ${green})`;
+}
 
 /***
  * Calling this function changes the 'quotebox' HTML class element to represent a randomly selected quote
@@ -70,6 +79,7 @@ function printQuote() {
     }
     out_string += '</p>';
     document.getElementById('quote-box').innerHTML = out_string;
+    changeBackground();
 }
 
 printQuote();
