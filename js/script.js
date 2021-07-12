@@ -46,6 +46,7 @@ quotes = [
     },
 ];
 
+let newQuoteTimer = setInterval(printQuote,1000);
 
 /***
  * Calling this function grabs a random quote from the quotes array
@@ -70,6 +71,11 @@ function changeBackground(){
  * Calling this function changes the 'quotebox' HTML class element to represent a randomly selected quote
  ***/
 function printQuote() {
+
+    //restart timer so it starts counting from refresh OR button press
+    clearInterval(newQuoteTimer);
+    newQuoteTimer = setInterval(printQuote, 10000)
+
     let quote = getRandomQuote();
     let out_string = `<p class="quote">${quote.quote}</p>`;
     out_string += `<p class="source">${quote.source}`;
