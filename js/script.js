@@ -1,13 +1,12 @@
 /************************************************
-Treehouse Techdegree:
-Project 4 - Random Quote Generator in JavaScript
-*************************************************/
+ Treehouse Techdegree:
+ Project 4 - Random Quote Generator in JavaScript
+ *************************************************/
 
 
-/*** 
- * `quotes` array 
-***/
-
+/***
+ * `quotes` array that contains a list of quotes and their source, citation, year and tags (if appliable)
+ ***/
 quotes = [
     {
         quote: "Toto, I've got a feeling we're not in Kansas anymore.",
@@ -41,33 +40,42 @@ quotes = [
     },
 ];
 
-//console.log(quotes);
-
 
 /***
- * `getRandomQuote` function
-***/
-
-function getRandomQuote(){
+ * Calling this function grabs a random quote from the quotes array
+ * @return {object} a quote object
+ ***/
+function getRandomQuote() {
     let rand_num = Math.floor(Math.random() * quotes.length);
     return quotes[rand_num];
 }
 
 
 /***
- * `printQuote` function
-***/
-
-function printQuote(){
+ * Calling this function changes the 'quotebox' HTML class element to represent a randomly selected quote
+ ***/
+function printQuote() {
     let quote = getRandomQuote();
+    let out_string = `<p class="quote">${quote.quote}</p>`;
+    out_string += `<p class="source">${quote.source}`;
 
+    if (quote.hasOwnProperty('citation')) {
+        out_string += `<span class="citation">${quote.citation}</span>`
+    }
+    if (quote.hasOwnProperty('year')) {
+        out_string += `<span class="year">${quote.year}</span>`
+    }
+    if (quote.hasOwnProperty('tags')) {
+        out_string += `<span class="tags">(${quote.tags})</span>`
+    }
+    out_string += '</p>';
+    document.getElementById('quote-box').innerHTML = out_string;
 }
 
-
+printQuote();
 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
-***/
-
+ ***/
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
